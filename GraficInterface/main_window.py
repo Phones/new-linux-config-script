@@ -72,12 +72,7 @@ class MainWindow(QWidget):
             if option.checked:
                 marked_options.append(option)
 
-        # print("Opções marcadas:")
-        # for label, value in marked_options:
-        #     print(label, "- Valor:", value)
-
-        # self.close()
-
+        self.close()
         return marked_options
 
     def exit_application(self):

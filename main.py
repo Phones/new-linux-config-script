@@ -5,5 +5,5 @@ from install_programs import InstallPrograms
 if __name__ == '__main__':
     app = QApplication(sys.argv)
     checkbox_widget = InstallPrograms()
-    checkbox_widget.separate_programs_by_installation_type()
+    checkbox_widget.install_programs()
     sys.exit(app.exec_())

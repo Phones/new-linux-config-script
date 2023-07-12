@@ -1,3 +1,5 @@
+import subprocess
+from helpers import printwc
 from GraficInterface.main_window import MainWindow
 
 class InstallPrograms(MainWindow):
@@ -9,9 +11,6 @@ class InstallPrograms(MainWindow):
         self.flatpak_installed_programs = []
         self.downloaded_programs = []
     
-    def install_program_using_apt_package_manager(self, list_programs):
-        pass
-
     def separate_programs_by_installation_type(self):
         selected_options = self.get_clicked_options()
 
@@ -27,3 +26,22 @@ class InstallPrograms(MainWindow):
     
 
         print(self.apt_installed_programs)
+
+    def install_program_using_apt_package_manager(self):
+        for program_name in self.apt_installed_programs:
+            comand = ['sudo', 'apt-get', 'install', program_name]
+            printwc(" ".join(comand))
+            process = subprocess.Popen(comand, stdout=subprocess.PIPE, universal_newlines=True)
+
+            # Loop para imprimir a saída em tempo real
+            while process.poll() is None:
+                output = process.stdout.readline()
+                if output:
+                    print(output.strip())
+            
+            printwc(f"------------- Fim da instalação [{comand[-1]}] -----------------")
+
+
+    def install_programs(self):
+        self.separate_programs_by_installation_type()
+        self.install_program_using_apt_package_manager()
