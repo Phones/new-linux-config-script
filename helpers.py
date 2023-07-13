@@ -1,3 +1,5 @@
+import os
+import subprocess
 from colorama import Fore, Back, Style
 
 color_dict = {
@@ -38,3 +40,13 @@ color_dict = {
 def printwc(text, color="bright_green"):
     color_text = color_dict[color]
     print(f"{color_text}{text}{Style.RESET_ALL}")
+
+def download_file_with_wget(url, destination_folder):
+    comand = ['wget', '-c', '-q','--show-progress', '-O', destination_folder, url]
+    subprocess.run(comand)
+
+def create_folder(folder_name):
+    os.mkdir(folder_name)
+
+def delete_folder_or_file(path):
+    os.system(f"rm -rf {path}")

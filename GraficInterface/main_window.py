@@ -31,7 +31,7 @@ class MainWindow(QWidget):
             CheckboxData("steam", "apt"),
             CheckboxData("OBS", "flatpak"),
             CheckboxData("docker", "script"),
-            CheckboxData("docker-compose", "download"),
+            CheckboxData("docker-compose", "script"),
             CheckboxData("obsidian", "download"),
             CheckboxData("extensões-vscode", "code")
         ]
